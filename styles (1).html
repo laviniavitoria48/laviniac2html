@@ -1,0 +1,178 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Supernatural - A Caçada Final</title>
+
+<style>
+/* ========================
+        TEMA SUPERNATURAL
+======================== */
+
+body {
+    background-color: #0d0d0d;
+    color: #e0e0e0;
+    font-family: "Bai Jamjuree", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url("img/supernatural-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    backdrop-filter: brightness(0.4);
+}
+
+button {
+    background-color: #4c0000;
+    color: white;
+    font-family: "Bai Jamjuree", sans-serif;
+    padding: 12px 22px;
+    border: none;
+    margin-top: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #7a0000;
+}
+
+.passo {
+    display: none;
+}
+
+.passo.ativo {
+    display: block;
+}
+
+main {
+    text-align: center;
+    max-width: 90%;
+    background-color: rgba(0,0,0,0.6);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+img {
+    max-width: 90%;
+    border-radius: 8px;
+}
+</style>
+</head>
+
+<body>
+<main>
+
+<!-- PASSO 0 -->
+<div class="passo ativo" id="passo-0">
+    <img src="img/supernatural-diario.png" alt="">
+    <p>No antigo diário de John Winchester, você encontra uma anotação sobre uma entidade muito poderosa prestes a despertar.  
+    John deixou pistas espalhadas pelo país. Você decide segui-las.</p>
+    <button class="btn-proximo" data-proximo="1">Investigar em Kansas</button>
+    <button class="btn-proximo" data-proximo="2">Seguir para Dakota do Sul</button>
+</div>
+
+<!-- PASSO 1 -->
+<div class="passo" id="passo-1">
+    <p>Em Kansas, você visita uma velha cabana usada como bunker improvisado pelos Winchester.  
+    Ali, você sente uma presença sombria rondando.</p>
+    <button class="btn-proximo" data-proximo="3">Entrar e investigar</button>
+    <button class="btn-proximo" data-proximo="4">Voltar antes que algo te veja</button>
+</div>
+
+<!-- PASSO 2 -->
+<div class="passo" id="passo-2">
+    <p>Em Dakota do Sul, você encontra Bobby Singer, que afirma ter visto sinais da criatura.</p>
+    <button class="btn-proximo" data-proximo="5">Pedir ajuda a Bobby</button>
+    <button class="btn-proximo" data-proximo="6">Seguir sozinho</button>
+</div>
+
+<!-- PASSO 3 -->
+<div class="passo" id="passo-3">
+    <p>Dentro da cabana, você encontra símbolos antigos indicando que a criatura está indo para o Colorado.</p>
+    <button class="btn-proximo" data-proximo="7">Viajar para o Colorado</button>
+</div>
+
+<!-- PASSO 4 -->
+<div class="passo" id="passo-4">
+    <img src="img/supernatural-voltar.png">
+    <p>Você decide que essa caçada é arriscada demais. Volta para casa, mas algo te observa na estrada...</p>
+</div>
+
+<!-- PASSO 5 -->
+<div class="passo" id="passo-5">
+    <p>Bobby te entrega páginas rasgadas do diário de John. Elas revelam que a criatura é um espírito ancestral.</p>
+    <button class="btn-proximo" data-proximo="7">Seguir para o Colorado</button>
+</div>
+
+<!-- PASSO 6 -->
+<div class="passo" id="passo-6">
+    <p>Seguindo sozinho, você acaba sendo atacado por um wendigo na estrada.  
+    Por sorte, consegue escapar e volta para pedir ajuda a Bobby.</p>
+    <button class="btn-proximo" data-proximo="5">Voltar para Bobby</button>
+</div>
+
+<!-- PASSO 7 -->
+<div class="passo" id="passo-7">
+    <p>No Colorado, você encontra uma floresta estranhamente silenciosa. Há dois caminhos escuros pela frente.</p>
+    <button class="btn-proximo" data-proximo="9">Entrar no caminho da névoa</button>
+    <button class="btn-proximo" data-proximo="10">Seguir pelo caminho de ossos</button>
+</div>
+
+<!-- PASSO 9 -->
+<div class="passo" id="passo-9">
+    <p>A névoa te leva a um altar antigo com inscrições indicando a fraqueza da criatura.</p>
+    <button class="btn-proximo" data-proximo="11">Enfrentar a criatura</button>
+</div>
+
+<!-- PASSO 10 -->
+<div class="passo" id="passo-10">
+    <p>O caminho dos ossos leva você a uma emboscada. A criatura quase te captura, mas você consegue fugir.</p>
+    <button class="btn-proximo" data-proximo="12">Voltar e tentar o outro caminho</button>
+</div>
+
+<!-- PASSO 12 -->
+<div class="passo" id="passo-12">
+    <p>Você retorna ao início da trilha e segue pela névoa, encontrando o altar e a pista final.</p>
+    <button class="btn-proximo" data-proximo="11">Enfrentar a criatura</button>
+</div>
+
+<!-- PASSO 11 -->
+<div class="passo" id="passo-11">
+    <img src="img/supernatural-fight.png">
+    <p>Usando as informações do altar, você derrota a entidade ancestral.  
+    O mundo está seguro… por enquanto.</p>
+</div>
+
+</main>
+
+<!-- ========================
+      SCRIPT (funciona!)
+======================== -->
+<script>
+const avanca = document.querySelectorAll('.btn-proximo');
+
+avanca.forEach(button => {
+    button.addEventListener('click', function() {
+
+        const atual = document.querySelector('.ativo');
+        const proximoPasso = 'passo-' + this.getAttribute('data-proximo');
+
+        atual.classList.remove('ativo');
+        document.getElementById(proximoPasso).classList.add('ativo');
+
+    });
+});
+</script>
+
+</body>
+</html>
