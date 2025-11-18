@@ -1,49 +1,55 @@
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Supernatural - A Caçada Final</title>
-
+<title>Supernatural: Caçada Sombria</title>
 <style>
-/* ========================
-        TEMA SUPERNATURAL
-======================== */
-
+/* === Estilo Geral === */
 body {
-    background-color: #0d0d0d;
-    color: #e0e0e0;
+    background-color: #0b0b0b;
+    color: #f1f1f1;
     font-family: "Bai Jamjuree", sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-image: url("img/supernatural-bg.jpg");
+    background-image: url('https://i.imgur.com/9h5F8wT.jpg'); /* floresta sombria */
     background-size: cover;
     background-position: center;
-    backdrop-filter: brightness(0.4);
+}
+
+main {
+    text-align: center;
+    max-width: 90%;
+    background: rgba(0,0,0,0.7);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #000;
+}
+
+img {
+    max-width: 80%;
+    margin: 10px 0;
+    border: 2px solid #f1f1f1;
+    border-radius: 5px;
 }
 
 button {
-    background-color: #4c0000;
-    color: white;
+    background-color: #8b0000;
+    color: #fff;
     font-family: "Bai Jamjuree", sans-serif;
-    padding: 12px 22px;
     border: none;
-    margin-top: 12px;
-    border-radius: 6px;
+    padding: 10px 20px;
+    margin: 5px;
     cursor: pointer;
-    transition: 0.3s;
+    border-radius: 5px;
+    transition: 0.2s;
 }
 
 button:hover {
-    background-color: #7a0000;
+    background-color: #ff0000;
 }
 
 .passo {
@@ -54,125 +60,97 @@ button:hover {
     display: block;
 }
 
-main {
-    text-align: center;
-    max-width: 90%;
-    background-color: rgba(0,0,0,0.6);
-    padding: 20px;
-    border-radius: 10px;
+p {
+    font-size: 1.2em;
 }
 
-img {
-    max-width: 90%;
-    border-radius: 8px;
+/* Efeito de névoa */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: url('https://i.imgur.com/6H4JXgJ.png'); /* névoa */
+    opacity: 0.3;
+    pointer-events: none;
 }
 </style>
 </head>
-
 <body>
 <main>
-
-<!-- PASSO 0 -->
+<!-- Passo 0 -->
 <div class="passo ativo" id="passo-0">
-    <img src="img/supernatural-diario.png" alt="">
-    <p>No antigo diário de John Winchester, você encontra uma anotação sobre uma entidade muito poderosa prestes a despertar.  
-    John deixou pistas espalhadas pelo país. Você decide segui-las.</p>
-    <button class="btn-proximo" data-proximo="1">Investigar em Kansas</button>
-    <button class="btn-proximo" data-proximo="2">Seguir para Dakota do Sul</button>
+<img src="https://i.imgur.com/kN3y5xz.png" alt="Diário dos Winchester">
+<p>Você encontra o diário antigo dos Winchester e uma carta sobre uma criatura sombria que assola a cidade. Pronto para a caçada?</p>
+<button class="btn-proximo" data-proximo="1">Aceitar a missão</button>
+<button class="btn-proximo" data-proximo="2">Ignorar e fugir</button>
 </div>
 
-<!-- PASSO 1 -->
+<!-- Passo 1 -->
 <div class="passo" id="passo-1">
-    <p>Em Kansas, você visita uma velha cabana usada como bunker improvisado pelos Winchester.  
-    Ali, você sente uma presença sombria rondando.</p>
-    <button class="btn-proximo" data-proximo="3">Entrar e investigar</button>
-    <button class="btn-proximo" data-proximo="4">Voltar antes que algo te veja</button>
+<img src="https://i.imgur.com/7kR8n5l.png" alt="Impala Preto">
+<p>Você pega o Impala 1967 e parte para a floresta sombria onde a criatura foi vista.</p>
+<button class="btn-proximo" data-proximo="3">Seguir estrada principal</button>
+<button class="btn-proximo" data-proximo="4">Seguir trilha secreta</button>
 </div>
 
-<!-- PASSO 2 -->
+<!-- Passo 2 -->
 <div class="passo" id="passo-2">
-    <p>Em Dakota do Sul, você encontra Bobby Singer, que afirma ter visto sinais da criatura.</p>
-    <button class="btn-proximo" data-proximo="5">Pedir ajuda a Bobby</button>
-    <button class="btn-proximo" data-proximo="6">Seguir sozinho</button>
+<p>Você decide não se envolver com o sobrenatural. A cidade permanece segura, mas a sensação de mistério nunca desaparece...</p>
 </div>
 
-<!-- PASSO 3 -->
+<!-- Passo 3 -->
 <div class="passo" id="passo-3">
-    <p>Dentro da cabana, você encontra símbolos antigos indicando que a criatura está indo para o Colorado.</p>
-    <button class="btn-proximo" data-proximo="7">Viajar para o Colorado</button>
+<img src="https://i.imgur.com/wd6YXlH.png" alt="Floresta Sombria">
+<p>Na estrada principal, você encontra uma cabana abandonada. Sons estranhos vêm de dentro.</p>
+<button class="btn-proximo" data-proximo="5">Investigar a cabana</button>
+<button class="btn-proximo" data-proximo="6">Ignorar e continuar</button>
 </div>
 
-<!-- PASSO 4 -->
+<!-- Passo 4 -->
 <div class="passo" id="passo-4">
-    <img src="img/supernatural-voltar.png">
-    <p>Você decide que essa caçada é arriscada demais. Volta para casa, mas algo te observa na estrada...</p>
+<img src="https://i.imgur.com/jrSHR4S.png" alt="Trilha Sombria">
+<p>Pela trilha secreta, você encontra inscrições antigas e sinais de magia negra.</p>
+<button class="btn-proximo" data-proximo="5">Seguir investigando</button>
+<button class="btn-proximo" data-proximo="6">Retornar à estrada principal</button>
 </div>
 
-<!-- PASSO 5 -->
+<!-- Passo 5 -->
 <div class="passo" id="passo-5">
-    <p>Bobby te entrega páginas rasgadas do diário de John. Elas revelam que a criatura é um espírito ancestral.</p>
-    <button class="btn-proximo" data-proximo="7">Seguir para o Colorado</button>
+<img src="https://i.imgur.com/xOcU6Pk.png" alt="Criatura Sombria">
+<p>Dentro da cabana, você encontra a criatura! Ela olha diretamente para você com olhos brilhantes.</p>
+<button class="btn-proximo" data-proximo="7">Enfrentar a criatura</button>
+<button class="btn-proximo" data-proximo="8">Tentar fugir</button>
 </div>
 
-<!-- PASSO 6 -->
+<!-- Passo 6 -->
 <div class="passo" id="passo-6">
-    <p>Seguindo sozinho, você acaba sendo atacado por um wendigo na estrada.  
-    Por sorte, consegue escapar e volta para pedir ajuda a Bobby.</p>
-    <button class="btn-proximo" data-proximo="5">Voltar para Bobby</button>
+<p>Você decide seguir sem investigar mais. À noite, a cidade é atacada e você sente culpa por não agir.</p>
 </div>
 
-<!-- PASSO 7 -->
+<!-- Passo 7 -->
 <div class="passo" id="passo-7">
-    <p>No Colorado, você encontra uma floresta estranhamente silenciosa. Há dois caminhos escuros pela frente.</p>
-    <button class="btn-proximo" data-proximo="9">Entrar no caminho da névoa</button>
-    <button class="btn-proximo" data-proximo="10">Seguir pelo caminho de ossos</button>
+<img src="https://i.imgur.com/8x5Srmh.png" alt="Batalha Sobrenatural">
+<p>Você enfrenta a criatura com armas e rituais do diário. Após uma batalha intensa, você consegue derrotá-la!</p>
 </div>
 
-<!-- PASSO 9 -->
-<div class="passo" id="passo-9">
-    <p>A névoa te leva a um altar antigo com inscrições indicando a fraqueza da criatura.</p>
-    <button class="btn-proximo" data-proximo="11">Enfrentar a criatura</button>
-</div>
-
-<!-- PASSO 10 -->
-<div class="passo" id="passo-10">
-    <p>O caminho dos ossos leva você a uma emboscada. A criatura quase te captura, mas você consegue fugir.</p>
-    <button class="btn-proximo" data-proximo="12">Voltar e tentar o outro caminho</button>
-</div>
-
-<!-- PASSO 12 -->
-<div class="passo" id="passo-12">
-    <p>Você retorna ao início da trilha e segue pela névoa, encontrando o altar e a pista final.</p>
-    <button class="btn-proximo" data-proximo="11">Enfrentar a criatura</button>
-</div>
-
-<!-- PASSO 11 -->
-<div class="passo" id="passo-11">
-    <img src="img/supernatural-fight.png">
-    <p>Usando as informações do altar, você derrota a entidade ancestral.  
-    O mundo está seguro… por enquanto.</p>
+<!-- Passo 8 -->
+<div class="passo" id="passo-8">
+<p>Você tenta fugir, mas a criatura é rápida. Você consegue escapar por pouco, mas a missão falhou.</p>
 </div>
 
 </main>
 
-<!-- ========================
-      SCRIPT (funciona!)
-======================== -->
 <script>
 const avanca = document.querySelectorAll('.btn-proximo');
-
 avanca.forEach(button => {
     button.addEventListener('click', function() {
-
         const atual = document.querySelector('.ativo');
         const proximoPasso = 'passo-' + this.getAttribute('data-proximo');
-
         atual.classList.remove('ativo');
         document.getElementById(proximoPasso).classList.add('ativo');
-
     });
 });
 </script>
-
 </body>
 </html>
